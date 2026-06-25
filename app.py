@@ -1,6 +1,8 @@
 import streamlit as st
 import requests
-
+import os
+# This tries to find the cloud address, or defaults to your computer if it can't find one
+BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
 # 1. Decorate the Storefront
 st.set_page_config(page_title="Smart Code Auditor", page_icon="🤖")
 st.title("🤖 Smart AI Code Auditor")
@@ -20,7 +22,8 @@ if uploaded_file is not None:
             files = {"file": (uploaded_file.name, uploaded_file.getvalue())}
             
             # Drive it to the FastAPI Factory
-            response = requests.post("http://localhost:8000/upload-code/", files=files)
+            # New line (using an f-string to combine your variable with the path)
+            response = requests.post(f"{BACKEND_URL}/audit", files=files)
             
             # If the factory hands back a receipt successfully:
             if response.status_code == 200:
