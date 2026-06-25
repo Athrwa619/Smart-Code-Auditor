@@ -5,7 +5,7 @@ import os
 try:
     BACKEND_URL = st.secrets["BACKEND_URL"]
 except:
-    BACKEND_URL = "http://localhost:8000"
+    BACKEND_URL = "http://localhost:8501"
 # 1. Decorate the Storefront
 st.set_page_config(page_title="Smart Code Auditor", page_icon="🤖")
 st.title("🤖 Smart AI Code Auditor")
