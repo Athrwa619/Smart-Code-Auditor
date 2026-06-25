@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import os
 # This tries to find the cloud address, or defaults to your computer if it can't find one
-BACKEND_URL = os.getenv("BACKEND_URL", "http://localhost:8000")
+BACKEND_URL = st.secrets.get("BACKEND_URL", "http://localhost:8000")
 # 1. Decorate the Storefront
 st.set_page_config(page_title="Smart Code Auditor", page_icon="🤖")
 st.title("🤖 Smart AI Code Auditor")
